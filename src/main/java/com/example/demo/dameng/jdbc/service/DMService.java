@@ -75,7 +75,6 @@ public class DMService {
     private static void loadDriver() {
         try {
             logger.debug("Loading JDBC Driver...");
-            // 加载JDBC驱动程序
             String driver = "dm.jdbc.driver.DmDriver";
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
@@ -95,7 +94,7 @@ public class DMService {
     @PreDestroy
     public void close() throws SQLException {
         try {
-            // 关闭连接
+            logger.info("Close dameng jdbc connection");
             conn.close();
         } catch (SQLException e) {
             throw new SQLException("close connection error : " + e.getMessage());
