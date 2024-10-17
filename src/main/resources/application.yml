@@ -1,4 +1,4 @@
-spring.application.name: dameng-jdbc
+spring.application.name: dameng-jdbc-demo
 dm:
   host: 127.0.0.1
   port: 5236
