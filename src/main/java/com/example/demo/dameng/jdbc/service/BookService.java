@@ -66,8 +66,7 @@ public class BookService {
             logger.warn("update book name, id:{}, empty name, ignore request", id);
             return;
         }
-        String sql = "UPDATE production.product SET name = ?"
-                + "WHERE productid = ?;";
+        String sql = "UPDATE production.product SET name = ? WHERE productid = ?;";
         PreparedStatement stmt = dmService.statement(sql);
         stmt.setString(1, name);
         stmt.setLong(2, id);
