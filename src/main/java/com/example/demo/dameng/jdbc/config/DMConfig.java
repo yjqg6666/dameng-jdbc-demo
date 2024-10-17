@@ -7,16 +7,16 @@ import org.springframework.context.annotation.Configuration;
 @SuppressWarnings("unused")
 public class DMConfig {
 
-    @Value("${dmHost:\"127.0.0.1\"}")
+    @Value("${dm.host}")
     private String host;
 
-    @Value("${dmPort:\"5236\"}")
+    @Value("${dm.port}")
     private String port;
 
-    @Value("${dmUser:\"SYSDBA\"}")
+    @Value("${dm.user}")
     private String username;
 
-    @Value("${dmPassword:\"SYSDBA\"}")
+    @Value("${dm.password}")
     private String password;
 
     public String getHost() {

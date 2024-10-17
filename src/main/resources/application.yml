@@ -1,0 +1,6 @@
+spring.application.name: dameng-jdbc
+dm:
+  host: 127.0.0.1
+  port: 5236
+  user: SYSDBA
+  password: SYSDBA
