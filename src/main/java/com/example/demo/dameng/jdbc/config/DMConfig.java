@@ -55,6 +55,10 @@ public class DMConfig {
         return this;
     }
 
+    public String toJdbc() {
+        return "jdbc:dm://" + host + ":" + port;
+    }
+
     @Override
     public String toString() {
         return "DMConfig{" +

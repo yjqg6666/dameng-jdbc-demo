@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.annotation.PreDestroy;
 import java.sql.CallableStatement;
@@ -35,8 +36,8 @@ public class DMService {
 
     @Autowired
     public DMService(DMConfig c) throws SQLException {
-        String jdbc = "jdbc:dm://" + c.getHost() + ":" + c.getPort();
-        conn = connect(jdbc, c.getUsername(), c.getPassword());
+        Assert.notNull(c, "DMConfig");
+        conn = connect(c.toJdbc(), c.getUsername(), c.getPassword());
     }
 
     public PreparedStatement statement(String sql) throws SQLException {
