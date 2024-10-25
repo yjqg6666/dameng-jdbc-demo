@@ -49,6 +49,14 @@ public class DMService {
         statement.close();
     }
 
+    public List<Map<String, String>> query(PreparedStatement stmt) throws SQLException {
+        ResultSet rs = stmt.executeQuery();
+        List<Map<String, String>> result = getResult(rs);
+        rs.close();
+        stmt.close();
+        return result;
+    }
+
     public void update(String sql) throws SQLException {
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(sql);
