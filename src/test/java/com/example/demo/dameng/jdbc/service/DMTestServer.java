@@ -12,6 +12,7 @@ public class DMTestServer {
     protected static final String USER = "SYSDBA";
     protected static final String PASSWORD = "SYSDBA001";
     private static final int PORT = 5236;
+
     @ClassRule
     public static GenericContainer<?> srv = new GenericContainer(DockerImageName.parse("yjqg6666/dameng-server:v8-20240715"))
             .withExposedPorts(PORT)

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.sql.Types;
 
 @Service
 public class DmCiService {
@@ -99,17 +100,18 @@ public class DmCiService {
         }
     }
 
-    public void updateValueCall(long id, String value) {
+    public int updateValueCall(long id, String value) {
         if (!StringUtils.hasText(value)) {
             logger.warn("update value call, id:{}, empty value, ignore request", id);
-            return;
+            return -1;
         }
-        String sql = "{ CALL ciUpdateValue(?,?) }";
-        try {
-            CallableStatement stmt = dmService.call(sql);
+        String sql = "{ CALL ciUpdateValue(?, ?, ?) }";
+        try (CallableStatement stmt = dmService.call(sql)) {
             stmt.setLong(1, id);
             stmt.setString(2, value);
-            dmService.call(stmt);
+            stmt.registerOutParameter(3, Types.INTEGER);
+            stmt.executeQuery();
+            return stmt.getInt("cnt");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -113,11 +113,12 @@ public class DMServiceTest extends DMTestServer {
         Assert.assertEquals("value", "init", info.get("ci_val"));
 
         String val = "citest";
-        ciService.updateValueCall(id, val);
+        int cnt = ciService.updateValueCall(id, val);
         Map<String, String> info2 = ciService.info(id);
         Assert.assertEquals("id", String.valueOf(id), info2.get("ci_id"));
         Assert.assertEquals("key", "ciUpdateValueCall", info2.get("ci_key"));
         Assert.assertEquals("value", val, info2.get("ci_val"));
+        Assert.assertEquals("count", 1, cnt);
     }
 
     @Test
