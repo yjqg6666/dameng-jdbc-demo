@@ -75,8 +75,8 @@ public class DMServiceTest extends DMTestServer {
     public void info() {
         Map<String, String> info = ciService.info(1);
         Assert.assertEquals("id", "1", info.get("ci_id"));
-        Assert.assertEquals("key", "plugin", info.get("key"));
-        Assert.assertEquals("value", "dameng-jdbc", info.get("value"));
+        Assert.assertEquals("ci_key", "plugin", info.get("ci_key"));
+        Assert.assertEquals("ci_val", "dameng-jdbc", info.get("ci_val"));
     }
 
     @Test
@@ -93,15 +93,15 @@ public class DMServiceTest extends DMTestServer {
         int id = 2;
         Map<String, String> info = ciService.info(id);
         Assert.assertEquals("id", String.valueOf(id), info.get("ci_id"));
-        Assert.assertEquals("key", "init", info.get("key"));
-        Assert.assertEquals("value", "updateKey", info.get("value"));
+        Assert.assertEquals("key", "init", info.get("ci_key"));
+        Assert.assertEquals("value", "updateKey", info.get("ci_val"));
 
         String key = "citest";
         ciService.updateKey(id, key);
         Map<String, String> info2 = ciService.info(id);
         Assert.assertEquals("id", String.valueOf(id), info2.get("ci_id"));
-        Assert.assertEquals("key", key, info2.get("key"));
-        Assert.assertEquals("value", "updateKey", info2.get("value"));
+        Assert.assertEquals("key", key, info2.get("ci_key"));
+        Assert.assertEquals("value", "updateKey", info2.get("ci_val"));
     }
 
     @Test
@@ -109,15 +109,15 @@ public class DMServiceTest extends DMTestServer {
         int id = 3;
         Map<String, String> info = ciService.info(id);
         Assert.assertEquals("id", String.valueOf(id), info.get("ci_id"));
-        Assert.assertEquals("key", "ciUpdateValueCall", info.get("key"));
-        Assert.assertEquals("value", "init", info.get("value"));
+        Assert.assertEquals("key", "ciUpdateValueCall", info.get("ci_key"));
+        Assert.assertEquals("value", "init", info.get("ci_val"));
 
         String val = "citest";
         ciService.updateValueCall(id, val);
         Map<String, String> info2 = ciService.info(id);
         Assert.assertEquals("id", String.valueOf(id), info2.get("ci_id"));
-        Assert.assertEquals("key", "ciUpdateValueCall", info2.get("key"));
-        Assert.assertEquals("value", val, info2.get("value"));
+        Assert.assertEquals("key", "ciUpdateValueCall", info2.get("ci_key"));
+        Assert.assertEquals("value", val, info2.get("ci_val"));
     }
 
     @Test

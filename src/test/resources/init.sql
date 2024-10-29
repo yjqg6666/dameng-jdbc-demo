@@ -1,13 +1,13 @@
 CREATE TABLE citest (
  ci_id INT IDENTITY(1,1) PRIMARY KEY,
- key VARCHAR(64) NOT NULL,
- value VARCHAR(64) NOT NULL,
+ ci_key VARCHAR(64) NOT NULL,
+ ci_val VARCHAR(64) NOT NULL,
  UNIQUE(ci_id)
 );
-INSERT INTO citest (key, value) VALUES('plugin', 'dameng-jdbc');
-INSERT INTO citest (key, value) VALUES('init', 'updateKey');
-INSERT INTO citest (key, value) VALUES('ciUpdateValueCall', 'init');
-INSERT INTO citest (key, value) VALUES('4del', '4del');
+INSERT INTO citest (ci_key, ci_val) VALUES('plugin', 'dameng-jdbc');
+INSERT INTO citest (ci_key, ci_val) VALUES('init', 'updateKey');
+INSERT INTO citest (ci_key, ci_val) VALUES('ciUpdateValueCall', 'init');
+INSERT INTO citest (ci_key, ci_val) VALUES('4del', '4del');
 
 SELECT * from citest;
 /

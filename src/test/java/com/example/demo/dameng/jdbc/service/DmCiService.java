@@ -25,7 +25,7 @@ public class DmCiService {
     }
 
     public void add(String key, String value) {
-        String sql = "INSERT INTO citest (key, value) VALUES (?,?);";
+        String sql = "INSERT INTO citest (ci_key, ci_val) VALUES (?,?);";
 
         try {
             PreparedStatement pstmt = dmService.statement(sql);
@@ -38,7 +38,7 @@ public class DmCiService {
     }
 
     public long select(String key, String value) {
-        String sql = "SELECT ci_id FROM citest WHERE key=? and value=?";
+        String sql = "SELECT ci_id FROM citest WHERE ci_key=? and ci_val=?";
         try {
             PreparedStatement pstmt = dmService.statement(sql);
             pstmt.setString(1, key);
@@ -66,7 +66,7 @@ public class DmCiService {
             logger.warn("update key, id:{}, empty key, ignore request", id);
             return;
         }
-        String sql = "UPDATE citest SET key = ? WHERE ci_id = ?;";
+        String sql = "UPDATE citest SET ci_key = ? WHERE ci_id = ?;";
         try {
             PreparedStatement stmt = dmService.statement(sql);
             stmt.setString(1, key);
