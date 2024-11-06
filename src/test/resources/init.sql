@@ -2,7 +2,6 @@ CREATE TABLE citest (
  ci_id INT IDENTITY(1,1) PRIMARY KEY,
  ci_key VARCHAR(64) NOT NULL,
  ci_val VARCHAR(64) NOT NULL,
- UNIQUE(ci_id)
 );
 INSERT INTO citest (ci_key, ci_val) VALUES('plugin', 'dameng-jdbc');
 INSERT INTO citest (ci_key, ci_val) VALUES('init', 'updateKey');
